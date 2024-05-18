@@ -5,9 +5,8 @@ using UnityEngine.Rendering.Universal;
 
 public class ItemBody : MonoBehaviour
 {
-    public Items Type;
-    public SpriteRenderer spriteRenderer;
-
+    public InventoryManager inventoryManager;
+    public Item item;
     public bool isColliding = false;
     // Start is called before the first frame update
     void Start()
@@ -18,9 +17,10 @@ public class ItemBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isColliding && Input.GetKeyDown(KeyCode.B) && HotbarSlotController.AddItem(new Item { Type = Type, spriteRenderer = spriteRenderer }))
+        if (isColliding && Input.GetKeyDown(KeyCode.B) && HotbarSlotController.AddItem(item)){
+            inventoryManager.AddItem(item);
             Destroy(gameObject);
-
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

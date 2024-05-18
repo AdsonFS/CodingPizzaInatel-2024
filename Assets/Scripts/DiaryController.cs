@@ -34,18 +34,18 @@ public class DiarieController
     };
 
 
-    private static List<Dictionary<Items, int>> nedeedItems = new()
+    private static List<Dictionary<ItemType, int>> nedeedItems = new()
     {
-        { new Dictionary<Items, int> { { Items.STICK, 2 }, { Items.STONE, 1 } } },
-        { new Dictionary<Items, int> { { Items.WOOD, 5 } } },
-        { new Dictionary<Items, int> { { Items.FISH, 5 } } },
-        { new Dictionary<Items, int> { { Items.STONE, 5 } } },
-        { new Dictionary<Items, int> { { Items.GRASS, 5 } } },
-        { new Dictionary<Items, int> { { Items.STICK, 5 } } },
-        { new Dictionary<Items, int> { { Items.BERRY, 5 } } },
-        { new Dictionary<Items, int> { { Items.POISONBERRY, 5 } } },
-        { new Dictionary<Items, int> { { Items.BERRY, 5 } } },
-        {  new Dictionary<Items, int> { { Items.WOOD, 5 } } }
+        { new Dictionary<ItemType, int> { { ItemType.STICK, 2 }, { ItemType.STONE, 1 } } },
+        { new Dictionary<ItemType, int> { { ItemType.WOOD, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.FISH, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.STONE, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.GRASS, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.STICK, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.POISONBERRY, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
+        {  new Dictionary<ItemType, int> { { ItemType.WOOD, 5 } } }
     };
 
     private static List<int> dependencies = new() {
@@ -75,7 +75,7 @@ public class DiarieController
             }
         }
     }
-    public static void CheckDay()
+    public static void CheckDay(List<Item> items)
     {
         bool update = false;
         for (int i = 0; i < nedeedItems.Count; i++)
@@ -84,7 +84,7 @@ public class DiarieController
             if ((maskTasks & (1 << i)) != 0) continue;
             foreach (var item in nedeedItems[i])
             {
-                if (HotbarSlotController._hotbar.Count(x => x.Type == item.Key) < item.Value)
+                if (items.Count(x => x.type == item.Key) < item.Value)
                     ok = false;
                 continue;
             }
