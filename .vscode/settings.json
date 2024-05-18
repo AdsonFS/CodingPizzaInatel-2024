@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CPG.sln"
+    "dotnet.defaultSolution": "CodingPizzaInatel-2024.sln"
 }
