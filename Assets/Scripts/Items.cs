@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item
+[CreateAssetMenu(menuName = "Scriptable obj")]
+public class Item : ScriptableObject
 {
-    public Items Type;
-    public SpriteRenderer spriteRenderer;
+    [Header("Only gameplay")]
+    public ItemType type;
+
+    [Header("Both")]
+    public Sprite image;
 }
 
-public enum Items
+public enum ItemType
 {
     GRASS,
     WOOD,
