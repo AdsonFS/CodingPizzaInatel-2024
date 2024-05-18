@@ -6,21 +6,19 @@ public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
     public Vector2 movement;
-    public bool keyBPressed = false;
+    public int CurrentDay;
+    public string Tasks;
     // Start is called before the first frame update
     void Start()
     {
-
+        DiarieController.UpdateTask();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            keyBPressed = true;
-        }
+        Tasks = DiarieController.GetTasks;
     }
 
     void Move()

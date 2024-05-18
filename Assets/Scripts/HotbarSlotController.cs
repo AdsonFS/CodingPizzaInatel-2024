@@ -30,6 +30,7 @@ public static class HotbarSlotController
         }
         else
             _hotbar.Add(item, 1);
+        DiarieController.CheckDay();
         return true;
     }
 

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiarieController
 {
-    public int CurrentDay { get; private set; } = 0;
-    public string Note = "";
-    private List<string> _diary = new()
+    public static int maskTasks = 0;
+    public static string Note = "";
+    public static string Tasks = "";
+    private static List<string> diary = new()
     {
         "Day 1: I have arrived on this island. I need to find a way to survive.",
         "Day 2: I have found some berries. I need to find a way to cook them.",
@@ -20,30 +22,67 @@ public class DiarieController
         "Day 10: I have found some more wood. I need to find a way to make a hammer."
     };
 
-    private Dictionary<int, Dictionary<Items, int>> nedeedItems = new()
+
+    private static List<Dictionary<Items, int>> nedeedItems = new()
     {
-        { 1, new Dictionary<Items, int> { { Items.BERRY, 5 }, { Items.WOOD, 3 } } },
-        { 2, new Dictionary<Items, int> { { Items.WOOD, 5 } } },
-        { 3, new Dictionary<Items, int> { { Items.FISH, 5 } } },
-        { 4, new Dictionary<Items, int> { { Items.STONE, 5 } } },
-        { 5, new Dictionary<Items, int> { { Items.GRASS, 5 } } },
-        { 6, new Dictionary<Items, int> { { Items.STICK, 5 } } },
-        { 7, new Dictionary<Items, int> { { Items.BERRY, 5 } } },
-        { 8, new Dictionary<Items, int> { { Items.POISONBERRY, 5 } } },
-        { 9, new Dictionary<Items, int> { { Items.BERRY, 5 } } },
-        { 10, new Dictionary<Items, int> { { Items.WOOD, 5 } } }
+        { new Dictionary<Items, int> { { Items.STICK, 2 }, { Items.STONE, 1 } } },
+        { new Dictionary<Items, int> { { Items.WOOD, 5 } } },
+        { new Dictionary<Items, int> { { Items.FISH, 5 } } },
+        { new Dictionary<Items, int> { { Items.STONE, 5 } } },
+        { new Dictionary<Items, int> { { Items.GRASS, 5 } } },
+        { new Dictionary<Items, int> { { Items.STICK, 5 } } },
+        { new Dictionary<Items, int> { { Items.BERRY, 5 } } },
+        { new Dictionary<Items, int> { { Items.POISONBERRY, 5 } } },
+        { new Dictionary<Items, int> { { Items.BERRY, 5 } } },
+        {  new Dictionary<Items, int> { { Items.WOOD, 5 } } }
     };
 
-    public string GetDiary => $"{Note}\n\n****************************************************\n\n{_diary[CurrentDay]}\n";
+    private static List<int> dependencies = new() {
+        -1,
+        -1,
+        1 << 0,
+        1 << 1,
+        1 << 2,
+        1 << 3,
+        1 << 3,
+        1 << 4,
+        1 << 5,
+        1 << 6
+    };
 
-    public bool CheckDay()
+    public static string GetTasks => $"{Note}\n\n****************************************************\n\n{Tasks}\n";
+
+    public static void UpdateTask()
     {
-        foreach (var item in nedeedItems[CurrentDay])
+        Tasks = "";
+        for (int i = 0; i < nedeedItems.Count; i++)
         {
-            if (!HotbarSlotController._hotbar.ContainsKey(item.Key) || HotbarSlotController._hotbar[item.Key] < item.Value)
-                return false;
+            if ((maskTasks & (1 << i)) != 0) continue;
+            if (dependencies[i] == -1 || ((maskTasks & (1 << i)) == 0 && (dependencies[i] & maskTasks) == dependencies[i]))
+            {
+                foreach (var item in nedeedItems[i])
+                {
+                    Tasks += $"- {diary[i]}\n";
+                }
+                Tasks += "\n";
+            }
         }
-
-        return true;
+    }
+    public static void CheckDay()
+    {
+        bool update = false;
+        for (int i = 0; i < nedeedItems.Count; i++)
+        {
+            bool ok = true;
+            if ((maskTasks & (1 << i)) != 0) continue;
+            foreach (var item in nedeedItems[i])
+            {
+                if (!HotbarSlotController._hotbar.ContainsKey(item.Key) || HotbarSlotController._hotbar[item.Key] < item.Value)
+                    ok = false;
+                continue;
+            }
+            if (ok) { maskTasks |= 1 << i; update = true; }
+        }
+        if (update) UpdateTask();
     }
 }
