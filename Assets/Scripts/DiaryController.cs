@@ -12,13 +12,13 @@ public class DiarieController
     private static List<string> diary = new()
     {
         "Eu estou perdido em uma ilha deserta. Eu preciso encontrar uma maneira de sobreviver.# I'm lost on a deserted island. I need to find a way to survive.",
-        "Preciso matar minha sede. Procure por coco;#I need to quench my thirst. Look for coconuts;",
+        "Preciso matar minha sede. Procure por coco rosa, ou pode ser um marrom se não encontrar;#I need to quench my thirst. Look for coconuts;",
         "Preciso levar água comigo. Construa um Cantil com o coco#I need to take water with me. Build a Canteen with the coconut;",
         "Preciso de água limpa. Colete água potável;#I need clean water. Collect drinking water;",
         "Pronto, vamos procurar material na floresta.#Ready, let's look for material in the forest;",
-        "Explore a floresta;#Explore the forest;",
+        "Vou explorar a floresta, espero não encontrar um urso;#Explore the forest;",
         "Estou com fome. Pegue frutas nas árvores (aperte [X] em uma árvore frutífera);#I'm hungry. Pick fruits from the trees (press [X] on a fruit tree);",
-        "Meu Deus, um Urso. Preciso de uma arma. Colete [N] gravetos;#My God, a Bear. I need a weapon. Collect [N] sticks;",
+        "Meu Deus, um Urso. Preciso de uma arma. Colete gravetos;#My God, a Bear. I need a weapon. Collect [N] sticks;",
         "Pronto peguei os gravetos. Construa uma Lança; #Ready I got the sticks. Build a Spear;",
         "Boa sorte pra mim. Enfrente o Urso;#Good luck to me. Face the Bear;",
         "Que escuro aqui, não consigo enxergar. Colete [N] Gravetos e [N] Matinhos para construir uma tocha;#It's dark here, I can't see. Collect [N] Sticks and [N] Grass to build a torch;",

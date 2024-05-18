@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,10 +10,20 @@ public class Player : MonoBehaviour
     public Vector2 movement;
     public int CurrentDay;
     public string Tasks;
+    public Text Text;
     // Start is called before the first frame update
+
+    private int ind = 0;
     void Start()
     {
         DiarieController.UpdateTask();
+        InvokeRepeating("updateText", 0.2f, 0.03f);
+    }
+
+    void updateText()
+    {
+        if (ind >= Tasks.Length) return;
+        Text.text += Tasks[ind++];
     }
 
     // Update is called once per frame
@@ -19,6 +31,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Tasks = DiarieController.GetTasks;
+        // Text.text = Tasks;
     }
 
     void Move()
