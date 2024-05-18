@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,11 +71,7 @@ public class DiarieController
             if ((maskTasks & (1 << i)) != 0) continue;
             if (dependencies[i] == -1 || ((maskTasks & (1 << i)) == 0 && (dependencies[i] & maskTasks) == dependencies[i]))
             {
-                foreach (var item in nedeedItems[i])
-                {
-                    Tasks += $"- {diary[i].Split("#")[0]}\n";
-                }
-                Tasks += "\n";
+                Tasks += $"- {diary[i].Split("#")[0]}\n\n";
             }
         }
     }
@@ -87,7 +84,7 @@ public class DiarieController
             if ((maskTasks & (1 << i)) != 0) continue;
             foreach (var item in nedeedItems[i])
             {
-                if (!HotbarSlotController._hotbar.ContainsKey(item.Key) || HotbarSlotController._hotbar[item.Key] < item.Value)
+                if (HotbarSlotController._hotbar.Count(x => x.Type == item.Key) < item.Value)
                     ok = false;
                 continue;
             }
