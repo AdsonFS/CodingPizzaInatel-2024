@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HotbarSlot : MonoBehaviour
 {
-    public List<Items> Hotbar = new();
+    public List<Item> Hotbar = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,6 @@ public class HotbarSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hotbar = HotbarSlotController._hotbar.ToList().Select(x => x.Key).ToList();
+        Hotbar = HotbarSlotController._hotbar;
     }
 }

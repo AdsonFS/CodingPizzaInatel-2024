@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 
 public static class HotbarSlotController
 {
-    public static Dictionary<Items, int> _hotbar = new();
+    public static List<Item> _hotbar = new();
     private static Dictionary<Items, int> _maxItem = new()
     {
         { Items.GRASS, 99 },
@@ -20,25 +22,18 @@ public static class HotbarSlotController
         { Items.POISONBERRY, 99 }
     };
 
-    public static bool AddItem(Items item)
+    public static bool AddItem(Item item)
     {
-        if (_hotbar.ContainsKey(item))
-        {
-            if (_hotbar[item] >= _maxItem[item])
-                return false;
-            _hotbar[item]++;
-        }
-        else
-            _hotbar.Add(item, 1);
+        if (_hotbar.Count(x => x.Type == item.Type) > _maxItem[item.Type])
+            return false;
+        _hotbar.Add(item);
         DiarieController.CheckDay();
         return true;
     }
 
     public static bool RemoveItem(Items item)
     {
-        if (!_hotbar.ContainsKey(item) || _hotbar[item] <= 0)
-            return false;
-        _hotbar[item]--;
+        _hotbar.Remove(_hotbar.Find(x => x.Type == item));
         return true;
     }
 }
