@@ -14,7 +14,10 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<ItemType, List<(ItemType itemType, int qt)>> ItemsDependency = new()
     {
-        { ItemType.AXE, new(){ (ItemType.HAMMER, 1)}}
+        { ItemType.SPEAR, new(){ (ItemType.STICK, 1)}},
+        { ItemType.TORCH, new(){ (ItemType.STICK, 1), (ItemType.GRASS, 1)}},
+        { ItemType.HAMMER, new(){ (ItemType.STONE, 1), (ItemType.STICK, 1)}},
+        { ItemType.AXE, new(){ (ItemType.ROCK, 1), (ItemType.STICK, 1)}},
     };
 
     public bool AddItem(Item item){
@@ -62,13 +65,16 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitializeItem(item);
     }
 
+    public bool hasItem(ItemType itemType, int qt = 1){
+        return _hotbar.Count(x => x.type == itemType) >= qt;
+    }
+
 
     private static Dictionary<ItemType, int> _maxItem = new()
     {
         { ItemType.GRASS, 99 },
         { ItemType.WOOD, 99 },
         { ItemType.AXE, 1 },
-        { ItemType.FISH, 99 },
         { ItemType.SPEAR, 1 },
         { ItemType.STICK, 99 },
         { ItemType.HAMMER, 1 },

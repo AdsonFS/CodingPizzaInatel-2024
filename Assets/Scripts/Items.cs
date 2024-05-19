@@ -14,15 +14,15 @@ public class Item : ScriptableObject
 
 public enum ItemType
 {
-    GRASS,
-    WOOD,
-    AXE,
-    FISH,
-    SPEAR,
     STICK,
-    HAMMER,
-    STONE,
     TORCH,
+    GRASS,
+    STONE,
+    ROCK,
+    HAMMER,
+    AXE,
+    WOOD,
+    SPEAR,
     BOTTLE,
     BERRY,
     COCUNUT,
