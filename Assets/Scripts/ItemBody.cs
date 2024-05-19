@@ -17,8 +17,7 @@ public class ItemBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isColliding && Input.GetKeyDown(KeyCode.B) && HotbarSlotController.AddItem(item)){
-            inventoryManager.AddItem(item);
+        if (isColliding && Input.GetKeyDown(KeyCode.B) && inventoryManager.AddItem(item)){
             Destroy(gameObject);
         }
     }
