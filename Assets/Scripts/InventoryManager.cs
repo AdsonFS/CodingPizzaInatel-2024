@@ -10,11 +10,19 @@ public class InventoryManager : MonoBehaviour
     public Item[] AllItems;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
+    public InventorySlot newItemSlot;
 
     private Dictionary<ItemType, List<(ItemType itemType, int qt)>> ItemsDependency = new()
     {
-        { ItemType.SPEAR, new(){ (ItemType.AXE, 1)}}
+        { ItemType.SPEAR, new(){ (ItemType.STICK, 1)}},
+        { ItemType.TORCH, new(){ (ItemType.STICK, 1), (ItemType.GRASS, 1)}},
+        { ItemType.HAMMER, new(){ (ItemType.STONE, 1), (ItemType.STICK, 1)}},
+        { ItemType.AXE, new(){ (ItemType.ROCK, 1), (ItemType.STICK, 1)}},
     };
+
+    public void Test(Item item){
+
+    }
 
     public bool AddItem(Item item){
         if (_hotbar.Count(x => x.type == item.type) > _maxItem[item.type])
@@ -45,7 +53,10 @@ public class InventoryManager : MonoBehaviour
             }
 
             if(canBeGenerated){
-                AddItem(AllItems.First(x => x.type == possibleNewItem.Key));
+                newItemSlot.gameObject.SetActive(true);
+                var newItem = AllItems.First(x => x.type == possibleNewItem.Key);
+                AddItem(newItem);
+                SpawnNewItem(newItem, newItemSlot);
             }
         }
 
@@ -58,19 +69,22 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitializeItem(item);
     }
 
+    public bool hasItem(ItemType itemType, int qt = 1){
+        return _hotbar.Count(x => x.type == itemType) >= qt;
+    }
+
 
     private static Dictionary<ItemType, int> _maxItem = new()
     {
         { ItemType.GRASS, 99 },
         { ItemType.WOOD, 99 },
         { ItemType.AXE, 1 },
-        { ItemType.FISH, 99 },
         { ItemType.SPEAR, 1 },
         { ItemType.STICK, 99 },
         { ItemType.HAMMER, 1 },
         { ItemType.STONE, 99 },
         { ItemType.TORCH, 99 },
         { ItemType.BERRY, 99 },
-        { ItemType.Cocunut, 99 }
+        { ItemType.COCUNUT, 99 }
     };
 }

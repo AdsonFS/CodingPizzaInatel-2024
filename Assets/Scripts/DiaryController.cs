@@ -38,12 +38,11 @@ public class DiarieController
     {
         { new Dictionary<ItemType, int> { { ItemType.STICK, 2 }, { ItemType.STONE, 1 } } },
         { new Dictionary<ItemType, int> { { ItemType.WOOD, 5 } } },
-        { new Dictionary<ItemType, int> { { ItemType.FISH, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.STONE, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.GRASS, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.STICK, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
-        { new Dictionary<ItemType, int> { { ItemType.Cocunut, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.COCUNUT, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
         {  new Dictionary<ItemType, int> { { ItemType.WOOD, 5 } } }
     };

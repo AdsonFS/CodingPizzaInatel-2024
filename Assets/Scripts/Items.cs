@@ -5,25 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable obj")]
 public class Item : ScriptableObject
 {
-    [Header("Only gameplay")]
     public ItemType type;
-
-    [Header("Both")]
     public Sprite image;
 }
 
 public enum ItemType
 {
-    GRASS,
-    WOOD,
-    AXE,
-    FISH,
-    SPEAR,
     STICK,
-    HAMMER,
-    STONE,
     TORCH,
-    Bottle,
+    GRASS,
+    STONE,
+    ROCK,
+    HAMMER,
+    AXE,
+    WOOD,
+    SPEAR,
+    BOTTLE,
     BERRY,
-    Cocunut
+    COCUNUT,
+    BOAT
 }
