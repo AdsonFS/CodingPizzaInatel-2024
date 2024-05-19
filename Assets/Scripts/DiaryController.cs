@@ -43,7 +43,7 @@ public class DiarieController
         { new Dictionary<ItemType, int> { { ItemType.GRASS, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.STICK, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
-        { new Dictionary<ItemType, int> { { ItemType.POISONBERRY, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.Cocunut, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
         {  new Dictionary<ItemType, int> { { ItemType.WOOD, 5 } } }
     };
@@ -71,6 +71,7 @@ public class DiarieController
             if ((maskTasks & (1 << i)) != 0) continue;
             if (dependencies[i] == -1 || ((maskTasks & (1 << i)) == 0 && (dependencies[i] & maskTasks) == dependencies[i]))
             {
+
                 Tasks += $"- {diary[i].Split("#")[0]}\n\n";
             }
         }

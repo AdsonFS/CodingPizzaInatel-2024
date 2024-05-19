@@ -23,6 +23,7 @@ public enum ItemType
     HAMMER,
     STONE,
     TORCH,
+    Bottle,
     BERRY,
-    POISONBERRY
+    Cocunut
 }
