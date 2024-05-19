@@ -8,16 +8,21 @@ public class ItemBody : MonoBehaviour
     public InventoryManager inventoryManager;
     public Item item;
     public bool isColliding = false;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-
+        inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isColliding && Input.GetKeyDown(KeyCode.B) && HotbarSlotController.AddItem(item)){
+        if (isColliding && Input.GetKeyDown(KeyCode.B) && HotbarSlotController.AddItem(item))
+        {
+            // play the sound
+            audioSource.Play();
+            // GetComponent<AudioSource>().Play();
             inventoryManager.AddItem(item);
             Destroy(gameObject);
         }
