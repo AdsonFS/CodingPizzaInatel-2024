@@ -8,6 +8,7 @@ public class BridgeBuild : MonoBehaviour
     public GameObject warningUI;
     public InventoryManager inventoryManager;
     public List<GameObject> gameObjects;
+    public BoxCollider2D boxCollider2D;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player"){
@@ -15,6 +16,7 @@ public class BridgeBuild : MonoBehaviour
                 foreach(var x in gameObjects){
                     x.SetActive(true);
                 }
+                boxCollider2D.enabled = false;
             }
             else{
                 warningUI.SetActive(true);
