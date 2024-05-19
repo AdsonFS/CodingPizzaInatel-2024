@@ -10,11 +10,11 @@ public class InventoryManager : MonoBehaviour
     public Item[] AllItems;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
-    public InventorySlot newItem;
+    public InventorySlot newItemSlot;
 
     private Dictionary<ItemType, List<(ItemType itemType, int qt)>> ItemsDependency = new()
     {
-        { ItemType.BOAT, new(){ (ItemType.WOOD, 1)}}
+        { ItemType.AXE, new(){ (ItemType.HAMMER, 1)}}
     };
 
     public bool AddItem(Item item){
@@ -46,7 +46,10 @@ public class InventoryManager : MonoBehaviour
             }
 
             if(canBeGenerated){
-                AddItem(AllItems.First(x => x.type == possibleNewItem.Key));
+                newItemSlot.gameObject.SetActive(true);
+                var newItem = AllItems.First(x => x.type == possibleNewItem.Key);
+                AddItem(newItem);
+                SpawnNewItem(newItem, newItemSlot);
             }
         }
 
