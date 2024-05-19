@@ -12,17 +12,22 @@ public class EndGameBoat : MonoBehaviour
     public List<Transform> path;
     public int index = 0;
     public float delta;
+    public bool isFinished = false;
 
     void Start()
     {
+        isFinished = true;
         player.gameObject.transform.SetParent(marzoEnd.gameObject.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(index > path.Count){
-            SceneManager.LoadScene("EndScene");
+        if(!isFinished) return;
+        if(index >= path.Count){
+            SceneManager.LoadScene("End");
+            isFinished = false;
+            return;
         }
         if(Mathf.Abs(Vector3.Distance(marzoEnd.gameObject.transform.position, path[index].position)) < 1) {
             index++;
