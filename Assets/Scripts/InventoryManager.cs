@@ -10,10 +10,11 @@ public class InventoryManager : MonoBehaviour
     public Item[] AllItems;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
+    public InventorySlot newItem;
 
     private Dictionary<ItemType, List<(ItemType itemType, int qt)>> ItemsDependency = new()
     {
-        { ItemType.SPEAR, new(){ (ItemType.AXE, 1)}}
+        { ItemType.BOAT, new(){ (ItemType.WOOD, 1)}}
     };
 
     public bool AddItem(Item item){
@@ -71,6 +72,6 @@ public class InventoryManager : MonoBehaviour
         { ItemType.STONE, 99 },
         { ItemType.TORCH, 99 },
         { ItemType.BERRY, 99 },
-        { ItemType.Cocunut, 99 }
+        { ItemType.COCUNUT, 99 }
     };
 }

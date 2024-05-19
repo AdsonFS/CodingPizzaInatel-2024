@@ -43,7 +43,7 @@ public class DiarieController
         { new Dictionary<ItemType, int> { { ItemType.GRASS, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.STICK, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
-        { new Dictionary<ItemType, int> { { ItemType.Cocunut, 5 } } },
+        { new Dictionary<ItemType, int> { { ItemType.COCUNUT, 5 } } },
         { new Dictionary<ItemType, int> { { ItemType.BERRY, 5 } } },
         {  new Dictionary<ItemType, int> { { ItemType.WOOD, 5 } } }
     };

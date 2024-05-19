@@ -23,7 +23,8 @@ public enum ItemType
     HAMMER,
     STONE,
     TORCH,
-    Bottle,
+    BOTTLE,
     BERRY,
-    Cocunut
+    COCUNUT,
+    BOAT
 }
