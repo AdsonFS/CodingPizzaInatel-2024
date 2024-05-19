@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78f162b5310c67848009c72056ede2f, type: 3}
   m_Name: torch
   m_EditorClassIdentifier: 
-  type: 8
-  image: {fileID: 21300000, guid: 3d1069aead0112c4cba265ffd1e8525c, type: 3}
+  type: 1
+  image: {fileID: 21300000, guid: 08c89b4c1ee75314ea6f6b56365b815d, type: 3}

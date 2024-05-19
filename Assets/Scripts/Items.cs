@@ -5,10 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable obj")]
 public class Item : ScriptableObject
 {
-    [Header("Only gameplay")]
     public ItemType type;
-
-    [Header("Both")]
     public Sprite image;
 }
 

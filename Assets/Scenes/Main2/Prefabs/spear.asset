@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78f162b5310c67848009c72056ede2f, type: 3}
   m_Name: spear
   m_EditorClassIdentifier: 
-  type: 4
+  type: 8
   image: {fileID: 21300000, guid: 81dabacbeb4b974489996875a822e82f, type: 3}

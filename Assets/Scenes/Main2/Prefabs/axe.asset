@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78f162b5310c67848009c72056ede2f, type: 3}
   m_Name: axe
   m_EditorClassIdentifier: 
-  type: 2
+  type: 6
   image: {fileID: 21300000, guid: 6be3ea051d86a004da84e12b6230af89, type: 3}
