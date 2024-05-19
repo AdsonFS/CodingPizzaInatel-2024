@@ -20,9 +20,6 @@ public class InventoryManager : MonoBehaviour
         { ItemType.AXE, new(){ (ItemType.ROCK, 1), (ItemType.STICK, 1)}},
     };
 
-    public void Test(Item item){
-
-    }
 
     public bool AddItem(Item item){
         if (_hotbar.Count(x => x.type == item.type) > _maxItem[item.type])
