@@ -18,16 +18,12 @@ public class ItemBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        if (isColliding && Input.GetKeyDown(KeyCode.B) && HotbarSlotController.AddItem(item))
+        if (isColliding && Input.GetKeyDown(KeyCode.B) && inventoryManager.AddItem(item))
         {
             // play the sound
             audioSource.Play();
             // GetComponent<AudioSource>().Play();
             inventoryManager.AddItem(item);
-=======
-        if (isColliding && Input.GetKeyDown(KeyCode.B) && inventoryManager.AddItem(item)){
->>>>>>> 3484eac2839c86db4cef341c07a41ebb09b7e317
             Destroy(gameObject);
         }
     }
