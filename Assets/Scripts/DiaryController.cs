@@ -60,7 +60,8 @@ public class DiarieController
         1 << 6
     };
 
-    public static string GetTasks => $"{Note}\n\n****************************************************\n\n{Tasks}\n";
+    // public static string GetTasks => $"{Note}\n\n****************************************************\n\n{Tasks}\n";
+    public static string GetTasks => $"****************************************************\n\n{Tasks}\n";
 
     public static void UpdateTask()
     {
